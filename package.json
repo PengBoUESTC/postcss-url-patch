@@ -15,14 +15,19 @@
     "test": "jest"
   },
   "keywords": [
-    "vue-router",
-    "version check"
+    "postcss",
+    "syle",
+    "url"
   ],
   "author": "pengboUESTC",
   "license": "ISC",
   "dependencies": {
     "postcss": "^8.4.33",
     "release-pkg": "^1.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PengBoUESTC/postcss-url-patch.git"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^23.0.2",
