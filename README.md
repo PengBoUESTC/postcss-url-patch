@@ -1,5 +1,13 @@
 # postcssUrlPatch
 
+- replace the `deprecated` with `base`
+
+      deprecated/a.png  => base/a.png
+
+- patch the `base` for the url without base
+
+      a.png => base/a.png
+
 ## options
 ```javascript
 interface Options {
