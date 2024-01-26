@@ -101,9 +101,9 @@ export const postcssUrlPatch = (options_: Partial<Options> = {}): Plugin => {
             const regexp = new RegExp(`['"]?${escapeRegExp(url)}['"]?`, 'gm')
 
             decl.value = decl.value.replace(regexp, `'${newUrl}'`)
-            console.log(url, 'successfully replaced with ', newUrl)
+            // console.log(url, 'successfully replaced with ', newUrl)
           } else {
-            console.log(url, 'failed')
+            // console.log(url, 'failed')
           }
         }),
       )
