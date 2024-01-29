@@ -1,3 +1,12 @@
+# [0.2.0](https://github.com/PengBoUESTC/postcss-url-patch/compare/v0.1.4...v0.2.0) (2024-01-29)
+
+
+### Features
+
+* support for version 7 ([889c0ac](https://github.com/PengBoUESTC/postcss-url-patch/commit/889c0ac1ec86f651c42bd70b0f85dda02abe6398))
+
+
+
 ## [0.1.4](https://github.com/PengBoUESTC/postcss-url-patch/compare/v0.1.3...v0.1.4) (2024-01-29)
 
 
