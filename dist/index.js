@@ -26,7 +26,8 @@ const formatOptions = (options) => {
     result.exclude = formatExclude(result.exclude);
     return result;
 };
-const postcssUrlPatch = (options_ = {}) => {
+
+var postcssUrlPatch = (options_ = {}) => {
     const options = formatOptions(options_);
     const loop = (cb) => {
         const matcher = /url\(\s*['"]*(?!['"]*data:)(.*?)['"]*\s*\)/gm;
@@ -54,6 +55,20 @@ const postcssUrlPatch = (options_ = {}) => {
             return `${base}${url}`;
         }, url);
     };
+    if (options.version === 7) {
+        return function (root) {
+            root.walkRules(function (rule) {
+                const { filter } = options;
+                rule.walkDecls(filter, loop(({ decl, url }) => {
+                    const newUrl = gneNewUrl(url, options);
+                    if (newUrl) {
+                        const regexp = new RegExp(`['"]?${escapeRegExp(url)}['"]?`, 'gm');
+                        decl.value = decl.value.replace(regexp, `'${newUrl}'`);
+                    }
+                }));
+            });
+        };
+    }
     return {
         postcssPlugin: 'postcss-url-patch',
         Once(root) {
