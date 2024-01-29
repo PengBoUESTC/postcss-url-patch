@@ -3560,7 +3560,7 @@ redent@^3.0.0:
     indent-string "^4.0.0"
     strip-indent "^3.0.0"
 
-release-pkg@^1.1.2:
+release-pkg@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/release-pkg/-/release-pkg-1.2.1.tgz#bd8edfeb628334d00e95d75711b25c0ee3427226"
   integrity sha512-YB3Z28uYZS2DjiYZneqgps2RtUdzW+mfpAkTuJtWNqBFNyI6cO2XCB8Jca8PPEnX6HBsKGZc2tS54ZWoMOZIiA==
