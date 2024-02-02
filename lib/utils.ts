@@ -42,7 +42,7 @@ const formatExclude = (exclude?: string | RegExp): RegExp | undefined => {
 const DEFAULTS: Partial<Options> = {
   exclude: /assets/,
   filter:
-    /^(mask(?:-image)?)|(list-style(?:-image)?)|(background(?:-image)?)|(content)|(cursor)/,
+    /^(mask(?:-image)?)|(list-style(?:-image)?)|(background(?:-image)?)|(content)|(cursor)|(src)/,
 }
 
 export const formatOptions = (options: Partial<Options>): Options => {
