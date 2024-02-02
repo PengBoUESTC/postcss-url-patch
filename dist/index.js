@@ -18,7 +18,7 @@ const formatExclude = (exclude) => {
 };
 const DEFAULTS = {
     exclude: /assets/,
-    filter: /^(mask(?:-image)?)|(list-style(?:-image)?)|(background(?:-image)?)|(content)|(cursor)/,
+    filter: /^(mask(?:-image)?)|(list-style(?:-image)?)|(background(?:-image)?)|(content)|(cursor)|(src)/,
 };
 const formatOptions = (options) => {
     const result = Object.assign(Object.assign({}, DEFAULTS), options);

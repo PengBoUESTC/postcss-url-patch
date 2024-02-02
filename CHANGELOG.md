@@ -1,3 +1,12 @@
+## [0.2.2](https://github.com/PengBoUESTC/postcss-url-patch/compare/v0.2.1...v0.2.2) (2024-02-02)
+
+
+### Features
+
+* add 'src' filter support ([eca34e7](https://github.com/PengBoUESTC/postcss-url-patch/commit/eca34e7be265a75d9460475c2d0da8dbd6ca559f))
+
+
+
 ## [0.2.1](https://github.com/PengBoUESTC/postcss-url-patch/compare/v0.2.0...v0.2.1) (2024-01-29)
 
 
