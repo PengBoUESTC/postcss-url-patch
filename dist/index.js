@@ -48,7 +48,9 @@ var postcssUrlPatch = (options_ = {}) => {
             }
             if (url.startsWith(base))
                 return url;
-            if (url.startsWith('http') || url.startsWith(':/'))
+            if (url.startsWith('https://') ||
+                url.startsWith('//') ||
+                url.startsWith('http://'))
                 return url;
             if (exclude && exclude.test(url))
                 return url;
