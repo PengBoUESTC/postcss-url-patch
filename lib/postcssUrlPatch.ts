@@ -40,7 +40,12 @@ export default (
         }
 
         if (url.startsWith(base)) return url
-        if (url.startsWith('http') || url.startsWith(':/')) return url
+        if (
+          url.startsWith('https://') ||
+          url.startsWith('//') ||
+          url.startsWith('http://')
+        )
+          return url
         if (exclude && (exclude as RegExp).test(url)) return url
         return `${base}${url}`
       },
