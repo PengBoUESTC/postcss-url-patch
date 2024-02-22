@@ -12,18 +12,25 @@ const formatRules = (rules) => {
     });
 };
 const formatExclude = (exclude) => {
-    if (typeof exclude === 'string')
-        return RegExp(escapeRegExp(exclude));
-    return exclude;
+    if (!exclude)
+        return () => true;
+    if (typeof exclude === 'function')
+        return exclude;
+    if (typeof exclude === 'string') {
+        return (path) => path.indexOf(exclude) !== -1;
+    }
+    return (path) => exclude.test(path);
 };
 const DEFAULTS = {
-    exclude: /assets/,
+    exclude: /node_modules/i,
+    excludeUrl: /assets/i,
     filter: /^(mask(?:-image)?)|(list-style(?:-image)?)|(background(?:-image)?)|(content)|(cursor)|(src)/,
 };
 const formatOptions = (options) => {
     const result = Object.assign(Object.assign({}, DEFAULTS), options);
     result.rules = formatRules(result.rules);
     result.exclude = formatExclude(result.exclude);
+    result.excludeUrl = formatExclude(result.excludeUrl);
     return result;
 };
 
@@ -39,7 +46,7 @@ var postcssUrlPatch = (options_ = {}) => {
         };
     };
     const gneNewUrl = (url, options) => {
-        const { rules, replace, exclude } = options;
+        const { rules, replace, excludeUrl } = options;
         return rules.reduce((url, { base, deprecated, replace: replaceLocale = replace }) => {
             if (!replaceLocale && deprecated && deprecated.test(url))
                 return url;
@@ -52,15 +59,19 @@ var postcssUrlPatch = (options_ = {}) => {
                 url.startsWith('//') ||
                 url.startsWith('http://'))
                 return url;
-            if (exclude && exclude.test(url))
+            if (excludeUrl(url))
                 return url;
             return `${base}${url}`;
         }, url);
     };
     if (options.version === 7) {
         return function (root) {
+            var _a;
+            const filePath = (_a = root.source) === null || _a === void 0 ? void 0 : _a.input.file;
+            const { filter, exclude } = options;
+            if (filePath && exclude(filePath))
+                return;
             root.walkRules(function (rule) {
-                const { filter } = options;
                 rule.walkDecls(filter, loop(({ decl, url }) => {
                     const newUrl = gneNewUrl(url, options);
                     if (newUrl) {
@@ -74,7 +85,11 @@ var postcssUrlPatch = (options_ = {}) => {
     return {
         postcssPlugin: 'postcss-url-patch',
         Once(root) {
-            const { filter } = options;
+            var _a;
+            const filePath = (_a = root.source) === null || _a === void 0 ? void 0 : _a.input.file;
+            const { filter, exclude } = options;
+            if (filePath && exclude(filePath))
+                return;
             root.walkDecls(filter, loop(({ decl, url }) => {
                 const newUrl = gneNewUrl(url, options);
                 if (newUrl) {

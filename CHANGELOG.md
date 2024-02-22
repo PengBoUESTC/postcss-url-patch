@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/PengBoUESTC/postcss-url-patch/compare/v0.2.3...v0.3.0) (2024-02-22)
+
+
+### Features
+
+* add excludeUrl & exclude options to support more operate ([6aa39a3](https://github.com/PengBoUESTC/postcss-url-patch/commit/6aa39a350d1b93cb321bc52d3a8f5223ca1bf1bb))
+
+
+
 ## [0.2.3](https://github.com/PengBoUESTC/postcss-url-patch/compare/v0.2.2...v0.2.3) (2024-02-19)
 
 
