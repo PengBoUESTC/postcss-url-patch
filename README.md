@@ -18,7 +18,9 @@ interface Options {
   }>
   replace?: boolean // replace the deprecated or not
   filter: RegExp // style selector
-  exclude?: string | RegExp // exclude style value test
+  exclude?: string | RegExp | ((path: string) => boolean) // exclude build dir, with default value /node_modules/i
+  excludeUrl?: string | RegExp | ((path: string) => boolean) // exclude url value, with default value /assets/i,
+  version?: VERSION // postcss 7 | 8
 }
 ```
 
