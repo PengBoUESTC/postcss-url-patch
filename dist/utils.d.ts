@@ -6,9 +6,7 @@ export interface Options {
   rules: Array<{
     base: string
     deprecated?: string | RegExp
-    replace?: boolean
   }>
-  replace?: boolean
   filter: RegExp
   exclude?: string | RegExp | ((path: string) => boolean)
   excludeUrl?: string | RegExp | ((path: string) => boolean)

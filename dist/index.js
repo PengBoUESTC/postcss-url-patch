@@ -46,15 +46,12 @@ var postcssUrlPatch = (options_ = {}) => {
         };
     };
     const gneNewUrl = (url, options) => {
-        const { rules, replace, excludeUrl } = options;
-        return rules.reduce((url, { base, deprecated, replace: replaceLocale = replace }) => {
-            if (!replaceLocale && deprecated && deprecated.test(url))
-                return url;
-            if (replaceLocale && deprecated) {
+        const { rules, excludeUrl } = options;
+        return rules.reduce((url, { base, deprecated }) => {
+            if (deprecated) {
                 url = url.replace(deprecated, base);
-            }
-            if (url.startsWith(base))
                 return url;
+            }
             if (url.startsWith('https://') ||
                 url.startsWith('//') ||
                 url.startsWith('http://'))

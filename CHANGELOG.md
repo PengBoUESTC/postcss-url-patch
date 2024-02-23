@@ -1,3 +1,12 @@
+## [0.3.1](https://github.com/PengBoUESTC/postcss-url-patch/compare/v0.3.0...v0.3.1) (2024-02-23)
+
+
+### Bug Fixes
+
+* url patch dup & remove replace option ([f5fe749](https://github.com/PengBoUESTC/postcss-url-patch/commit/f5fe7494d33c10137eff8defb57cf25565b814a4))
+
+
+
 # [0.3.0](https://github.com/PengBoUESTC/postcss-url-patch/compare/v0.2.3...v0.3.0) (2024-02-22)
 
 
